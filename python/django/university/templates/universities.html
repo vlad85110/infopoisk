@@ -1,0 +1,17 @@
+
+{% for university in universities %}
+<div>
+  <a>{{ university.full_name }} - {{ university.short_name }} - {{ university.creation_date }}</a>
+  <a href="{% url 'delete_university' university.id %}">Delete</a>
+  <a href="{% url 'edit_university' university.id %}">Edit</a>
+
+</div>
+{% endfor %}
+
+<div>
+    <a href="create_university"> create </a>
+</div>
+
+<div>
+    <a href="/"> main </a>
+</div>

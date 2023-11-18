@@ -1,0 +1,16 @@
+
+{% for student in students %}
+<div>
+  <a>{{ student.full_name }} - {{ student.birth_date }} - {{ student.university.full_name }} - {{ student.enrollment_year }}</a>
+  <a href="{% url 'delete_student' student.id %}">Delete</a>
+  <a href="{% url 'edit_student' student.id %}">Edit</a>
+</div>
+{% endfor %}
+
+<div>
+    <a href="create_student"> create </a>
+</div>
+
+<div>
+    <a href="/"> main </a>
+</div>

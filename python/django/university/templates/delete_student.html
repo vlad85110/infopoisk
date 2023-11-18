@@ -1,0 +1,8 @@
+{% block content %}
+  <h2>Delete Student</h2>
+  <p>Are you sure you want to delete "{{ student.full_name }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
+{% endblock %}

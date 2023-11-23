@@ -41,9 +41,13 @@ def create_student(request):
 
 def delete_university(request, university_id):
     university = get_object_or_404(University, pk=university_id)
+    if university.student_set.exists():
+        return redirect('universities')
+
     if request.method == 'POST':
         university.delete()
         return redirect('universities')
+
     return render(request, 'delete_university.html', {'university': university})
 
 

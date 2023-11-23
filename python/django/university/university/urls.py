@@ -20,7 +20,7 @@ from app.views import *
 
 
 urlpatterns = [
-    path('', index),
+    path('', index, name='index'),
     path('students', students_list, name='students'),
     path('universities', universities_list, name='universities'),
     path('create_university', create_university, name='create_university'),

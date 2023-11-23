@@ -14,7 +14,7 @@ class University(models.Model):
 class Student(models.Model):
     full_name = models.CharField(max_length=100)
     birth_date = models.DateField()
-    university = models.ForeignKey(University, on_delete=models.CASCADE)
+    university = models.ForeignKey(University, on_delete=models.PROTECT)
     enrollment_year = models.IntegerField(default=0)
 
     def __str__(self):

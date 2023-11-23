@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University and Students</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% endwith %}
+
+    <h1>Universities</h1>
+    <ul>
+        {% for university in universities %}
+            <li>
+                {{ university.full_name }} ({{ university.short_name }}) - {{ university.created_date }}
+                <a href="{{ url_for('edit_university', id=university.id) }}">Edit</a>
+                <a href="{{ url_for('delete_university', id=university.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h1>Students</h1>
+    <ul>
+        {% for student in students %}
+            <li>
+                {{ student.full_name }} - {{ student.birth_date }} - {{ student.university.full_name }} - {{ student.admission_year }}
+                <a href="{{ url_for('edit_student', id=student.id) }}">Edit</a>
+                <a href="{{ url_for('delete_student', id=student.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Add University</h2>
+    <form method="POST" action="{{ url_for('add_university') }}">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required>
+        <label for="short_name">Short Name:</label>
+        <input type="text" id="short_name" name="short_name" required>
+        <button type="submit">Add University</button>
+    </form>
+
+    <h2>Add Student</h2>
+    <form method="POST" action="{{ url_for('add_student') }}">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" required>
+        <label for="birth_date">Birth Date:</label>
+        <input type="date" id="birth_date" name="birth_date" required>
+        <label for="university">University:</label>
+        <select id="university" name="university" required>
+            {% for university in universities %}
+                <option value="{{ university.id }}">{{ university.full_name }}</option>
+            {% endfor %}
+        </select>
+        <label for="admission_year">Admission Year:</label>
+        <input type="number" id="admission_year" name="admission_year" required>
+        <button type="submit">Add Student</button>
+    </form>
+
+    {% if current_user.is_authenticated %}
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+    {% endif %}
+</body>
+</html>

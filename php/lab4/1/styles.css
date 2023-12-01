@@ -1,0 +1,26 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+}
+
+/* Стили для td */
+td {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 12pt;
+}
+
+/* Стили для h4 */
+h4 {
+    color: blue;
+    font-size: 14pt;
+}

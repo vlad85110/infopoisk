@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отображение таблиц</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<form action="handleForm.php" method="GET">
+    <table>
+        <thead>
+        <tr>
+            <th>Имя таблицы</th>
+            <th>Отобразить содержимое</th>
+            <th>Отобразить структуру</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Продавцы (sal)</td>
+            <td><input type="checkbox" name="showContent1"></td>
+            <td><input type="checkbox" name="showStructure1"></td>
+        </tr>
+        <tr>
+            <td>Покупатели (cust)</td>
+            <td><input type="checkbox" name="showContent2"></td>
+            <td><input type="checkbox" name="showStructure2"></td>
+        </tr>
+        <tr>
+            <td>Заказы (ord)</td>
+            <td><input type="checkbox" name="showContent3"></td>
+            <td><input type="checkbox" name="showStructure3"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <input type="submit" value="Отобразить">
+</form>
+
+</body>
+</html>

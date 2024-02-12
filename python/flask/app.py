@@ -159,6 +159,12 @@ def login():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+
+        if user != None:
+            flash('This user already exists', 'warning')
+            return render_template('register.html', form=form)
+
         hashed_password = generate_password_hash(form.password.data, method='pbkdf2:sha256')
         new_user = User(username=form.username.data, password=hashed_password)
         db.session.add(new_user)
